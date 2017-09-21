@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-data-example" />
+        <module name="spring-jpa-merge" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-data-example" target="1.7" />
+      <module name="spring-data-jpa" target="1.5" />
+      <module name="spring-jpa-merge" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
