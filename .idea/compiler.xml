@@ -10,8 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-data-jpa" target="1.5" />
-      <module name="spring-jpa-merge" target="1.5" />
+      <module name="spring-data-jpa" target="1.7" />
+      <module name="spring-jpa-merge" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

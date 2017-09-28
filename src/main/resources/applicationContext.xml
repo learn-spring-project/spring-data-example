@@ -20,7 +20,7 @@
           http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
           http://www.springframework.org/schema/data/jpa
           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-
+    <!--启用注解配置和包扫描-->
     <context:annotation-config />
 
     <context:component-scan base-package="jpa"/>
@@ -36,8 +36,28 @@
     </bean>
 
     <!-- 启用 annotation事务-->
+    <!-- 将事务管理加到标有 @Transactional 的类或者方法上 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <bean id="entityManagerFactory2" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="myJPA2"/>
+    </bean>
+
+
+    <!-- 配置事务管理器 -->
+<!--    <bean id="transactionManager2" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory2" />
+        <qualifier value="aaaEM" />
+    </bean>-->
+
+    <!-- 启用 annotation事务-->
+    <!-- 将事务管理加到标有 @Transactional 的类或者方法上 -->
+<!--
+    <tx:annotation-driven transaction-manager="transactionManager2"/>
+
+-->
+
+    <!--创建Spring Data JPA实例对象-->
     <!-- 配置Spring Data JPA扫描目录-->
     <jpa:repositories base-package="jpa.repository"/>
 

@@ -24,8 +24,8 @@ public  interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findByUser5();
 
     @Transactional(timeout = 2, propagation = Propagation.REQUIRED)
-    @Query("SELECT u FROM User u WHERE u.name = 'zzh2'")
-    List<User> findByGivenQuery();
+    @Query("SELECT u FROM User u WHERE u.name = :name")
+    List<User> findByGivenQuery(@Param("name") String name);
 
-    List<User> findByIdAndName(@Param("id") String id, @Param("name") String name);
+    List<User> findByIdAndName(@Param("id") int id, @Param("name") String name);
 }

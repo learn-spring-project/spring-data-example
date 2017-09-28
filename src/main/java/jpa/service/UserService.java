@@ -2,6 +2,8 @@ package jpa.service;
 
 import jpa.domain.User;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/9/15.
  */
@@ -30,4 +32,10 @@ public interface UserService {
      * @param id
      */
     void deleteUserById(Integer id);
+
+    public List<User> findByGivenQuery(String name);
+
+    public  List<User> findByIdAndName(int id, String name);
+
+    public  List<User> findByName(String name);
 }

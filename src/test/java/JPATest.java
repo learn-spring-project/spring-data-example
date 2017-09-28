@@ -18,7 +18,7 @@ public class JPATest {
 
     @Before
     public void init(){
-        entityManagerFactory = Persistence.createEntityManagerFactory("myJPA");
+        entityManagerFactory = Persistence.createEntityManagerFactory("myJPA2");
         entityManager = entityManagerFactory.createEntityManager();
         transaction = entityManager.getTransaction();
         transaction.begin();

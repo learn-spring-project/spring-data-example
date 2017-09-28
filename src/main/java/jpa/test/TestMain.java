@@ -1,6 +1,7 @@
 package jpa.test;
 
 import jpa.domain.User;
+import jpa.repository.UserDao;
 import jpa.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,11 +15,14 @@ public class TestMain {
     public static void main(String[] args) {
         //如果加载spring-context.xml文件：
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
-        UserService userService = (UserService) context.getBean("userService");
-        testUpdateUser(userService);
+        UserDao userDao = (UserDao)context.getBean("userDao");
+        userDao.delete(2);
+        //UserService userService = (UserService) context.getBean("userService");
+        //testUpdateUser(userService);
         //User user = userService.findUserById(1);
         //userService.deleteUserById(1);
+        //System.out.println(userService.findByGivenQuery("zzh2"));
+        //System.out.println(userService.findByIdAndName(1, "zzh2"));
     }
 
     public static  void testSaveUser(UserService userService) {
@@ -50,7 +54,6 @@ public class TestMain {
 
     public static void testDeleteUserById(UserService userService) {
         Integer id = 1;
-
         userService.deleteUserById(id);
     }
 

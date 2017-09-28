@@ -3,6 +3,7 @@ package jpa.repository;
 import jpa.domain.User;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,9 +15,9 @@ import java.util.Map;
  * Created by Administrator on 2017/9/17.
  */
 
-@Repository
+@Repository("userDao")
 public class UserDao {
-    @PersistenceContext
+    @PersistenceContext(unitName = "myJPA2")
     private EntityManager em ;
 
     /**
@@ -35,9 +36,7 @@ public class UserDao {
      * @return
      */
     public User update(User t){
-
         return this.em.merge(t);
-
     }
 
 
@@ -45,9 +44,9 @@ public class UserDao {
      * 删除
      * @param id
      */
+    @Transactional
     public void delete(Integer id){
-        User t = this.em.unwrap(User.class);
-        t.setId(id);
+        User t = this.em.find(User.class,id);
         this.em.remove(t);
     }
 
@@ -58,7 +57,6 @@ public class UserDao {
      * @return
      */
     public User findOne(Long id){
-
         return this.em.find(User.class,id);
 
     }
