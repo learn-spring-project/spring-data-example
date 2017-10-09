@@ -24,12 +24,12 @@ public class JPATest {
 	@Test
 	public void testPersonService(){
 		Person p1 = new Person();
-		p1.setAge(11);
+		p1.setAge(15);
 		p1.setEmail("aa@163.com");
 		p1.setLastName("AA");
 		
 		Person p2 = new Person();
-		p2.setAge(12);
+		p2.setAge(16);
 		p2.setEmail("bb@163.com");
 		p2.setLastName("BB");
 		

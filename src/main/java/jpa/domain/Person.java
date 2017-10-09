@@ -1,20 +1,22 @@
 package jpa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Administrator on 2017/9/28.
  */
 @Entity
-@Table
+@Table(name = "person1")
 @IdClass(PersonCompositeId.class)
 public class Person {
+    @Column(name = "name1")
     private String name;
+
+    @Column(name = "age1")
     private long age;
-    private String adress;
+
+    @Column(name = "address1")
+    private String address;
 
     @Id
     public String getName() {
@@ -35,9 +37,18 @@ public class Person {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAdress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", adress='" + address + '\'' +
+                '}';
     }
 }

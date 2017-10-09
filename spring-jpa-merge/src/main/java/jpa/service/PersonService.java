@@ -13,7 +13,7 @@ public class PersonService {
 	@Autowired
 	private PersonDao personDao;
 	
-	@Transactional
+	@Transactional(transactionManager = "transactionManager2")
 	public void savePersons(Person p1, Person p2){
 		personDao.save(p1);
 		

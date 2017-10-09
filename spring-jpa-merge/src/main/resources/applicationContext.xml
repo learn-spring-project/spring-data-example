@@ -18,17 +18,26 @@
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 		<property name="driverClass" value="${jdbc.driverClass}"></property>
-		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>	
-		
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 		<!-- 配置其他属性 -->
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="20"/>
+		<property name="initialPoolSize" value="1"/>
+		<property name="maxIdleTime" value="25000"/>
+		<property name="acquireIncrement" value="1"/>
+		<property name="acquireRetryAttempts" value="30"/>
+		<property name="acquireRetryDelay" value="1000"/>
+		<property name="testConnectionOnCheckin" value="true"/>
+		<property name="automaticTestTable" value="c3p0TestTable"/>
+		<property name="idleConnectionTestPeriod" value="18000"/>
+		<property name="checkoutTimeout" value="3000"/>
 	</bean>
 
-	<!-- 配置多数据源-->
-	
 	<!-- 配置 EntityManagerFactory -->
-	<bean id="entityManagerFactory"
+	<bean id="entityManagerFactory"  autowire="byName"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<property name="persistenceUnitName" value="aaaUnit"></property>
 		<!-- 配置 JPA 提供商的适配器. 可以通过内部 bean 的方式来配置 -->
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
@@ -53,5 +62,48 @@
 	
 	<!-- 配置支持基于注解是事务配置 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- ******************************************************** -->
+	<!-- 配置多数据源-->
+	<bean id="dataSource2"
+		  class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl2}"></property>
+		<!-- 配置其他属性 -->
+	</bean>
+
+
+	<!-- 配置 EntityManagerFactory -->
+	<bean id="entityManagerFactory2"  autowire="byName"
+		  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource2"></property>
+		<property name="persistenceUnitName" value="bbbUnit"></property>
+		<!-- 配置 JPA 提供商的适配器. 可以通过内部 bean 的方式来配置 -->
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<!-- 配置实体类所在的包 -->
+		<property name="packagesToScan" value="jpa.spring.entities"></property>
+		<!-- 配置 JPA 的基本属性. 例如 JPA 实现产品的属性 -->
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置 JPA 使用的事务管理器 -->
+	<bean id="transactionManager2"
+		  class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory2"></property>
+	</bean>
+
+	<!-- 配置支持基于注解是事务配置 -->
+	<tx:annotation-driven transaction-manager="transactionManager2"/>
+
 
 </beans>
