@@ -15,13 +15,12 @@ public class PersonDao {
 
 	//如何获取到和当前事务关联的 EntityManager 对象呢 ?
 	//通过 @PersistenceContext 注解来标记成员变量!
-	//@PersistenceContext(name = "aaaUnit")
+	//@PersistenceContext(unitName = "aaaUnit")
 	@PersistenceContext(unitName = "bbbUnit")
-	@Qualifier(value = "entityManagerFactory2")
+/*	@Qualifier(value = "entityManagerFactory2")*/
 	private EntityManager entityManager;
 
 /*	@PersistenceUnit(unitName = "bbbUnit")
-	@Qualifier(value = "entityManagerFactory2")
 	private EntityManagerFactory entityManagerFactory2;*/
 
 	public void save(Person person){

@@ -61,7 +61,7 @@
 
     <!--创建Spring Data JPA实例对象-->
     <!-- 配置Spring Data JPA扫描目录-->
-    <jpa:repositories base-package="jpa.repository"/>
+    <jpa:repositories base-package="jpa.repository" />
 
 
 
