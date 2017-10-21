@@ -59,8 +59,8 @@
     <tx:annotation-driven transaction-manager="transactionManager2"/>
 
 
-    <!--创建Spring Data JPA实例对象-->
-    <!-- 配置Spring Data JPA扫描目录-->
+    <!--创建Spring Data JPA实例对象 @EnableJpaRepositories-->
+    <!-- 配置Spring Data JPA扫描目录 可以指定使用的实体工厂，多数据源常用transaction-manager-ref="" entity-manager-factory-ref=""-->
     <jpa:repositories base-package="jpa.repository" />
 
 
