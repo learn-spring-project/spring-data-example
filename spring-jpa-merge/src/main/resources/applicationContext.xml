@@ -9,7 +9,7 @@
 
 	<!-- 配置自动扫描的包 -->
 	<context:component-scan base-package="jpa"></context:component-scan>
-
+	<context:component-scan base-package="datasource"></context:component-scan>
 	<!-- 配置 C3P0 数据源 -->
 	<context:property-placeholder location="classpath:db.properties"/>
 

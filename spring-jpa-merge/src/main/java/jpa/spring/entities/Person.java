@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="JPA_PERSONS_dataSource")
+@Table(name="JPA_PERSONS_CONFIG")
 @Entity
 public class Person {
 
