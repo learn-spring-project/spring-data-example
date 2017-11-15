@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Administrator on 2017/9/15.
  */
 @Repository
-public class ClassicUserRepository2 {
+public class ClassicUserRepository {
     @PersistenceContext(unitName = "myJPA")
     EntityManager em;
 

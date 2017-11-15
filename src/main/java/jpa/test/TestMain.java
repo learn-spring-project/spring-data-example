@@ -15,9 +15,10 @@ public class TestMain {
     public static void main(String[] args) {
         //如果加载spring-context.xml文件：
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserDao userDao = (UserDao)context.getBean("userDao");
-        userDao.delete(2);
-        //UserService userService = (UserService) context.getBean("userService");
+        //UserDao userDao = (UserDao)context.getBean("userDao2");
+        //userDao.delete(2);
+        UserService userService = (UserService) context.getBean("userService");
+        testSaveUser(userService);
         //testUpdateUser(userService);
         //User user = userService.findUserById(1);
         //userService.deleteUserById(1);

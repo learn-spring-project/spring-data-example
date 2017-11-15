@@ -40,28 +40,29 @@
     <!-- 将事务管理加到标有 @Transactional 的类或者方法上 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <!-- ******************************************************** -->
+    <!-- 配置多数据源-->
+
     <bean id="entityManagerFactory2" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="myJPA2"/>
     </bean>
 
 
     <!-- 配置事务管理器 -->
-<!--    <bean id="transactionManager2" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <bean id="transactionManager2" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory2" />
         <qualifier value="aaaEM" />
-    </bean>-->
+    </bean>
 
     <!-- 启用 annotation事务-->
     <!-- 将事务管理加到标有 @Transactional 的类或者方法上 -->
-<!--
     <tx:annotation-driven transaction-manager="transactionManager2"/>
 
--->
 
-    <!--创建Spring Data JPA实例对象-->
-    <!-- 配置Spring Data JPA扫描目录-->
-    <jpa:repositories base-package="jpa.repository"/>
+    <!--创建Spring Data JPA实例对象 @EnableJpaRepositories-->
+    <!-- 配置Spring Data JPA扫描目录 可以指定使用的实体工厂，多数据源常用transaction-manager-ref="" entity-manager-factory-ref=""-->
+    <jpa:repositories base-package="jpa.repository" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
 
-
+    <jpa:repositories base-package="jpa.repository2" transaction-manager-ref="transactionManager2" entity-manager-factory-ref="entityManagerFactory2"/>
 
 </beans>
