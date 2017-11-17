@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring-data-jpa.iml" filepath="$PROJECT_DIR$/spring-data-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-jpa-merge/spring-jpa-merge.iml" filepath="$PROJECT_DIR$/spring-jpa-merge/spring-jpa-merge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-jpa-native-single-datasource/spring-jpa-native-single-datasource.iml" filepath="$PROJECT_DIR$/spring-jpa-native-single-datasource/spring-jpa-native-single-datasource.iml" />
     </modules>
   </component>
 </project>

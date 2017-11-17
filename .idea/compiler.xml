@@ -7,11 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-jpa-merge" />
+        <module name="spring-jpa-native-single-datasource" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-data-jpa" target="1.8" />
       <module name="spring-jpa-merge" target="1.8" />
+      <module name="spring-jpa-native-single-datasource" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
   </component>
 </project>
